@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/AreaComz",
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "target": "es2015",
+    "declaration": true,
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "types": ["node"]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules/**/*",
+    "bin"
+  ]
+}

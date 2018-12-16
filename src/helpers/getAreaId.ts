@@ -4,6 +4,6 @@ const AREA_CONST = 'AREA';
  * @param gameId - unique identifier of the game id using the areas
  * @returns {string}
  */
-module.exports = function getAreaId (areaIndex, gameId) {
+export function getAreaId (areaIndex, gameId) {
     return AREA_CONST + areaIndex + '_' + gameId
 };

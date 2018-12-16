@@ -1,0 +1,25 @@
+{
+    "extends": "airbnb",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "env": {
+        "es6":     true,
+        "browser": true,
+        "node":    true,
+        "mocha":   true
+    },
+    "rules": {
+        "no-lonely-if": 1,
+        "radix": 0,
+        "max-len": 1,
+        "arrow-body-style": 0,
+        "no-else-return": 0,
+        "dot-notation": 0,
+        "indent": ["error", 4],
+        "no-useless-escape": 2,
+        "curly": 2,
+        "semi": "error"
+    }
+}
