@@ -39,11 +39,6 @@ export class Area {
         this.pubSocket.send([this.areaId, encoded]);
     }
 
-    public close() {
-        this.dealerSocket.close();
-        this.pubSocket.close();
-    }
-
     private handleChannelMessage(message: any) {
         message = JSON.parse(message);
         this.onChannelMessage(message);
@@ -55,5 +50,10 @@ export class Area {
                 this.handleChannelMessage(args[1]);
             }
         });
+    }
+
+    public close() {
+        this.dealerSocket.close();
+        this.pubSocket.close();
     }
 };
