@@ -13,7 +13,7 @@ export declare class Area {
     constructor(URI: any, brokerURI: any, areaIndex: any, gameId: any);
     onChannelMessage(message: any): void;
     broadcast(data: any): void;
-    close(): void;
     private handleChannelMessage;
     private registerMessageHandlers;
+    close(): void;
 }

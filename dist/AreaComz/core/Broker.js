@@ -15,7 +15,6 @@ class Broker {
         this.routerSocket = zmq.socket('router');
         this.routerSocket.identity = `areaRouter ${gameId} `;
         this.routerSocket.bindSync(RouterURI);
-        console.log("Binded router socket in Broker to ", RouterURI);
         this.registerRouterMessages();
     }
     registerRouterMessages() {
