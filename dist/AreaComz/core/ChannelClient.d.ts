@@ -1,11 +1,14 @@
 import { Channel } from './Channel';
 export declare class ChannelClient {
-    private channel;
-    private sessionId;
-    constructor(sessionId: any, channel: any);
+    private state;
+    channels: Array<Channel>;
+    uid: string;
+    constructor(uid: any);
+    onConfirmedConnection(areaIndex: number, data?: any): void;
+    onFailedConnection(areaIndex: number, data?: any): void;
     updateState(state: any): void;
+    isInArea(areaIndex: any): boolean;
     getCurrentState(): any;
-    getCurrentAreaId(): string;
-    getCurrentAreaIndex(): number;
-    getCurrentChannel(): Channel;
+    getCurrentAreaIds(): string[];
+    getCurrentAreaIndexes(): number[];
 }

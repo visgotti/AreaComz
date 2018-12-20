@@ -1,10 +1,10 @@
 export declare class Broker {
     private routerSocket;
     /**
-     * @param {string} RouterURI - URI string for the router to listen on
+     * @param {string} routerURI - URI string for the brokers router
      * @param {int} gameId - Unique identifier of the game the router is used for.
      */
-    constructor(RouterURI: any, gameId: any);
+    constructor(routerURI: any, gameId: any);
     private registerRouterMessages;
     close(): void;
 }

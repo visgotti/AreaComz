@@ -1,24 +1,37 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class ChannelClient {
-    constructor(sessionId, channel) {
-        this.sessionId = sessionId;
-        this.channel = channel;
+    constructor(uid) {
+        this.uid = uid;
+        this.state = {};
+        this.channels = [];
     }
+    onConfirmedConnection(areaIndex, data) { }
+    ;
+    onFailedConnection(areaIndex, data) { }
+    ;
     updateState(state) {
-        this.channel.updateClientState(this.sessionId, state);
+        this.state = state;
+        for (let i = 0; i < this.channels.length; i++) {
+            this.channels[i].updateClientState(this.uid, state);
+        }
+    }
+    isInArea(areaIndex) {
+        for (let i = 0; i < this.channels.length; i++) {
+            if (areaIndex === this.channels[i].areaIndex) {
+                return true;
+            }
+        }
+        return false;
     }
     getCurrentState() {
-        return this.channel.getCurrentState(this.sessionId);
+        return this.state;
     }
-    getCurrentAreaId() {
-        return this.channel.areaId;
+    getCurrentAreaIds() {
+        return this.channels.map(channel => channel.areaId);
     }
-    getCurrentAreaIndex() {
-        return this.channel.areaIndex;
-    }
-    getCurrentChannel() {
-        return this.channel;
+    getCurrentAreaIndexes() {
+        return this.channels.map(channel => channel.areaIndex);
     }
 }
 exports.ChannelClient = ChannelClient;

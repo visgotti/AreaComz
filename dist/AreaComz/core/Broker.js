@@ -7,18 +7,22 @@ const zmq = require("zeromq");
  */
 class Broker {
     /**
-     * @param {string} RouterURI - URI string for the router to listen on
+     * @param {string} routerURI - URI string for the brokers router
      * @param {int} gameId - Unique identifier of the game the router is used for.
      */
-    constructor(RouterURI, gameId) {
+    constructor(routerURI, gameId) {
         this.routerSocket = {};
+        console.log('RECONSTRUCTING...');
         this.routerSocket = zmq.socket('router');
         this.routerSocket.identity = `areaRouter ${gameId} `;
-        this.routerSocket.bindSync(RouterURI);
+        this.routerSocket.bindSync(routerURI);
         this.registerRouterMessages();
     }
     registerRouterMessages() {
+        // handle message from connector server
         this.routerSocket.on('message', (...args) => {
+            console.log('forward message', args[3].toString());
+            console.log('to ', args[1].toString());
             this.routerSocket.send([args[1], '', args[3]]);
         });
     }
