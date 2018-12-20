@@ -9,7 +9,7 @@ export declare class Connector {
     channels: Array<Channel>;
     gameId: number;
     constructor(brokerRouterURI: string, areasData: Array<any>, connectorIndex: number, gameId: number);
-    onAreaMessage(areaId: string, message: any): void;
+    onAreaMessage(areaIndex: string, message: any): void;
     getChannel(areaId: any): Channel;
     disconnectClient(uid: any): void;
     /**

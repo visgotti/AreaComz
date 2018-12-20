@@ -1,12 +1,12 @@
 import { ChannelClient } from './ChannelClient';
 export declare class Channel {
     private dealerSocket;
-    private clients;
     private pendingStates;
     areaId: string;
+    clients: Array<any>;
     areaIndex: number;
     constructor(dealerSocket: any, areaIndex: number, gameId: number);
-    onAreaMessage(message: any): void;
+    onAreaMessage(areaIndex: any, data: any): void;
     addClient(channelClient: ChannelClient, data?: any): void;
     /** Removes client completely from system, allows options to relay message to area server.
      * @param uid - unique identifier of client

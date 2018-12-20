@@ -12,7 +12,6 @@ class Connector {
         this.dealerSocket = zmq.socket('dealer');
         this.dealerSocket.identity = "connector-" + connectorIndex + '-' + gameId;
         this.dealerSocket.connect(brokerRouterURI);
-        console.log('connector connected... to', brokerRouterURI);
         this.subscriberSocket = zmq.socket('sub');
         this.channels = [];
         this.channelMap = new Map();
@@ -22,7 +21,7 @@ class Connector {
         this.createChannels(areasData);
         this.registerResponseHandlers();
     }
-    onAreaMessage(areaId, message) { }
+    onAreaMessage(areaIndex, message) { }
     getChannel(areaId) {
         return this.channelMap.get(areaId);
     }
@@ -105,11 +104,12 @@ class Connector {
         this.dealerSocket.close();
         this.subscriberSocket.close();
     }
-    handleReceivedMessage(areaId, message) {
+    handleReceivedMessage(message) {
         message = JSON.parse(message);
-        areaId = areaId.toString();
-        this.onAreaMessage(areaId, message);
-        this.channelMap.get(areaId).onAreaMessage(message);
+        const areaIndex = message.areaIndex;
+        const data = message.data;
+        this.onAreaMessage(areaIndex, data);
+        this.channels[areaIndex].onAreaMessage(areaIndex, data);
     }
     createChannels(areasData) {
         for (let i = 0; i < areasData.length; i += 1) {
@@ -124,7 +124,7 @@ class Connector {
         this.subscriberSocket.on('message', (...args) => {
             const message = args[1];
             const areaId = args[0];
-            this.handleReceivedMessage(areaId, message);
+            this.handleReceivedMessage(message);
         });
     }
     registerResponseHandlers() {

@@ -18,7 +18,6 @@ class Area {
         this.areaId = getAreaId_1.getAreaId(areaIndex, gameId);
         this.dealerSocket.identity = this.areaId;
         this.dealerSocket.connect(routerBrokerURI);
-        console.log('connecting dealer in area with area id of', this.areaId);
         this.registerRequestHandlers();
         this.pubSocket = zmq.socket('pub');
         this.pubSocket.bind(URI);
@@ -35,7 +34,10 @@ class Area {
      */
     onClientConnect(uid, data) { }
     broadcast(data) {
-        const encoded = JSON.stringify(data);
+        const message = {};
+        message.data = data;
+        message.areaIndex = this.areaIndex;
+        const encoded = JSON.stringify(message);
         this.pubSocket.send([this.areaId, encoded]);
     }
     registerRequestHandlers() {

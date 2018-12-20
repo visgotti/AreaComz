@@ -10,7 +10,7 @@ class Channel {
         this.clients = [];
         this.pendingStates = {};
     }
-    onAreaMessage(message) { }
+    onAreaMessage(areaIndex, data) { }
     addClient(channelClient, data) {
         // attach channelClient to the client
         this.clients.push(channelClient);
@@ -29,7 +29,6 @@ class Channel {
         });
         delete this.pendingStates[uid];
         if (reasonCode !== null && !(isNaN(reasonCode))) {
-            console.log('the reason code was', reasonCode);
             if (!(index_1.LEAVE_AREA_CODE_LOOKUP[reasonCode])) {
                 throw 'Invalid reason code provided to removeClient';
             }
@@ -108,7 +107,6 @@ class Channel {
      */
     sendMessage(message) {
         const serialized = JSON.stringify(message);
-        console.log('sending message from channel...', this.areaId);
         this.dealerSocket.send([this.areaId, '', serialized]);
     }
 }
