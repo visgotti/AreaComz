@@ -1,4 +1,4 @@
-export declare const MESSAGE_CODE_LOOKUP: {
+export declare const CONNECTOR_REQUEST_CODES: {
     CONNECT: number;
     DISCONNECT: number;
     DATA: number;

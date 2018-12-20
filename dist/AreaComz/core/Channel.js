@@ -69,7 +69,7 @@ class Channel {
      */
     _sendClientDisconnect(sessionId, reasonCode, data) {
         const msg = {
-            type: index_1.MESSAGE_CODE_LOOKUP.DISCONNECT,
+            type: index_1.CONNECTOR_REQUEST_CODES.DISCONNECT,
             reasonCode,
         };
         if (data) {
@@ -77,7 +77,7 @@ class Channel {
         }
         ;
         this.sendMessage({
-            type: index_1.MESSAGE_CODE_LOOKUP.DISCONNECT,
+            type: index_1.CONNECTOR_REQUEST_CODES.DISCONNECT,
             sessionId,
             reasonCode,
         });

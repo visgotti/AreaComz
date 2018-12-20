@@ -1,7 +1,7 @@
 import { ChannelClient } from './ChannelClient';
 
 import { getAreaId } from './../helpers/getAreaId';
-import { MESSAGE_CODE_LOOKUP, LEAVE_AREA_CODE_LOOKUP } from './../index';
+import { CONNECTOR_REQUEST_CODES, LEAVE_AREA_CODE_LOOKUP } from './../index';
 
 export class Channel {
     private dealerSocket: any;
@@ -20,84 +20,119 @@ export class Channel {
 
     public onAreaMessage(message) {}
 
-    public addClient(sessionId: string) {
-        const channelClient = new ChannelClient(sessionId, this);
+    public addClient(channelClient: ChannelClient, data?: any) {
         // attach channelClient to the client
         this.clients.push(channelClient);
-        return channelClient;
+        channelClient.channels.push(this);
+        this._sendClientConnect(channelClient.uid, data);
     }
 
     /** Removes client completely from system, allows options to relay message to area server.
-     * @param sessionId
+     * @param uid - unique identifier of client
      * @param reasonCode - if the removal came from the connector end we need to notify
      * the area server with a disconnect message with a reason code.
      * @param data - If you need to send extra data along about the removal
      */
-    public removeClient(sessionId: string, reasonCode?: number, data?: any) {
+    public removeClient(uid: string, reasonCode?: number, data?: any) {
         this.clients = this.clients.filter((_client) => {
-            return _client.sessionId !== sessionId
+            return _client.uid !== uid
         });
 
-        delete this.pendingStates[sessionId];
+        delete this.pendingStates[uid];
 
         if(reasonCode !== null && !(isNaN(reasonCode))) {
             console.log('the reason code was', reasonCode);
             if(!(LEAVE_AREA_CODE_LOOKUP[reasonCode])) {
                 throw 'Invalid reason code provided to removeClient';
             }
-            this._sendClientDisconnect(sessionId, reasonCode, data);
+            this._sendClientDisconnect(uid, reasonCode, data);
         }
     }
 
     // this overrides any past state for the session as newest.
-    public updateClientState(sessionId, data) {
-        this.pendingStates[sessionId] = data;
+    public updateClientState(uid, data) {
+        this.pendingStates[uid] = data;
     }
 
     // used to get current state of player in channel
-    public getCurrentState(sessionId) {
-        return this.pendingStates[sessionId];
+    public getCurrentState(uid) {
+        return this.pendingStates[uid];
     }
 
     // use this if you dont want to wait to relay
     // states in batched intervals
-    public relayClientState(sessionId, data) {
-        const serialized = JSON.stringify({ sessionId, data });
+    public relayClientState(uid, data) {
+        const serialized = JSON.stringify({ uid, data });
         this.dealerSocket.send([ this.areaId, '', serialized])
-    }
-
-    public sendMessage(message) {
-        const serialized = JSON.stringify(message);
-        this.dealerSocket.send([ this.areaId, '', serialized]);
     }
 
     // this is when you want the area server
     // to start processing client state.
     public sendClientStates() {
-        const serialized = JSON.stringify(this.pendingStates);
-        this.dealerSocket.send([this.areaId, '', serialized])
+        this.sendMessage({
+            type: CONNECTOR_REQUEST_CODES.DATA,
+            data: this.pendingStates
+        });
     }
 
+    // sending any other type of data to area other than
+    // state updates/disconnect/connect
+    public sendData(data: any) {
+        this.sendMessage({
+            type: CONNECTOR_REQUEST_CODES.DATA,
+            data,
+        })
+    }
+
+    public hasClient(uid: string) {
+        for(let i = 0; i < this.clients.length; i++) {
+            if(this.clients[i].uid === uid) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private registerResponseHandlers(){}
+
+
     /**
-     * @param sessionId - id of client to disconnect
+     * @param uid - unique id of client to disconnect
      * @param reasonCode - reason the channel is telling the area client disconnected
      * @param data - optional data to send a long with the disconnect message
      * @private
      */
-    private _sendClientDisconnect(sessionId, reasonCode: number, data?: any) {
-        const msg : any = {
-            type: MESSAGE_CODE_LOOKUP.DISCONNECT,
-            reasonCode,
-        };
-
-        if(data) {
-            msg.data = data;
-        };
-
+    private _sendClientDisconnect(uid, reasonCode: number, data?: any) {
         this.sendMessage({
-            type: MESSAGE_CODE_LOOKUP.DISCONNECT,
-            sessionId,
+            type: CONNECTOR_REQUEST_CODES.CLIENT_DISCONNECT,
+            from: this.dealerSocket.identity,
+            uid,
             reasonCode,
+            data,
         });
+    }
+
+    /**
+     * @param uid - unique id of client to connect
+     * @param data - any data you want the area to process when connected
+     * @private
+     */
+    private _sendClientConnect(uid: string, data?: any) {
+        this.sendMessage({
+            type: CONNECTOR_REQUEST_CODES.CLIENT_CONNECT,
+            from: this.dealerSocket.identity,
+            uid,
+            data,
+        });
+    }
+
+
+    /** lowest level function for parsing then sending message through a channel.
+     * @param message - data to send over socket
+     */
+    private sendMessage(message: any) {
+        const serialized = JSON.stringify(message);
+        console.log('sending message from channel...', this.areaId);
+        this.dealerSocket.send([ this.areaId, '', serialized]);
     }
 };

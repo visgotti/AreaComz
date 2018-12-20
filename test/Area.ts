@@ -12,7 +12,8 @@ describe('Channel <--> Area Communication', function() {
     let areas: Array<Area> = [];
     let connectors: Array<Connector> = [];
     let config: any;
-    let brokerURI: string;
+    let routerBrokerURI: string;
+    let dealerBrokerURI: string;
     let areaURIs: Array<string> = [];
     let broker: Broker;
 
@@ -22,19 +23,22 @@ describe('Channel <--> Area Communication', function() {
          for(let i = 0; i < config.areas.length; i++) {
             areaURIs.push(config.areas[i].URI);
          }
-         brokerURI = config.broker.URI;
+
+         routerBrokerURI = config.broker.ROUTER_URI;
 
          for(let i = 0; i < areaURIs.length; i++) {
-             areas.push(new Area(areaURIs[i], brokerURI, i, gameId));
+             areas.push(new Area(areaURIs[i], routerBrokerURI, i, gameId));
          }
 
          for(let i = 0; i < config.connectors.length; i++) {
-             connectors.push(new Connector(brokerURI, config.areas, gameId));
+             connectors.push(new Connector(routerBrokerURI, config.areas, i, gameId));
          }
 
-         broker = new Broker(config.broker.URI, gameId);
+         broker = new Broker(routerBrokerURI, gameId);
 
-         done();
+        setTimeout(() => {
+            done();
+        }, 500);
     });
 
     after((done) => {
@@ -48,17 +52,17 @@ describe('Channel <--> Area Communication', function() {
         done();
     });
 
-    it('Area correctly receives the message from channel', function(done) {
+    it('Area correctly receives data from channel.sendData', function(done) {
         let area0 = areas[0];
         let receivedMessage = null;
         let sentMessage = "foo";
-        area0.onChannelMessage = ((message) => {
-            receivedMessage = message;
+        area0.onChannelMessage = ((data) => {
+            receivedMessage = data;
         });
 
-        let Channel0 = connectors[0].getChannel(area0.areaId);
+        let channel0 = connectors[0].getChannel(area0.areaId);
 
-        Channel0.sendMessage(sentMessage);
+        channel0.sendData(sentMessage);
         setTimeout(() => {
             assert.strictEqual(receivedMessage, sentMessage);
             done();
@@ -70,15 +74,15 @@ describe('Channel <--> Area Communication', function() {
 
         for(let i = 0; i < areas.length; i++) {
             receivedAreaCounts[areas[i].areaId] = 0;
-            areas[i].onChannelMessage = ((message) => {
-                receivedAreaCounts[message]++;
+            areas[i].onChannelMessage = ((data) => {
+                receivedAreaCounts[data]++;
             })
         }
 
         for(let i = 0; i < connectors.length; i++) {
             for(let j = 0; j < connectors[i].channels.length; j++) {
                 let channel = connectors[i].channels[j];
-                channel.sendMessage(channel.areaId);
+                channel.sendData(channel.areaId);
             }
         }
         setTimeout(() => {
@@ -109,15 +113,15 @@ describe('Channel <--> Area Communication', function() {
 
         // channel 0s onAreaMessage WILL be fired
         channel0s.forEach(channel => {
-            channel.onAreaMessage = ((message) => {
+            channel.onAreaMessage = ((data) => {
                 messagesReceived++;
-                assert.strictEqual(message, area0.areaId);
+                assert.strictEqual(data, area0.areaId);
             });
         });
 
         // channel1s onAreaMessage will NOT be fired
         channel1s.forEach(channel => {
-            channel.onAreaMessage = ((message) => {
+            channel.onAreaMessage = ((data) => {
                 messagesReceived++;
             });
         });

@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MESSAGE_CODE_LOOKUP = {
+exports.CONNECTOR_REQUEST_CODES = {
     CONNECT: 0,
     DISCONNECT: 1,
     DATA: 2,
 };
 exports.MESSAGE_CODES = {
-    0: exports.MESSAGE_CODE_LOOKUP.CONNECT,
-    1: exports.MESSAGE_CODE_LOOKUP.DISCONNECT,
-    2: exports.MESSAGE_CODE_LOOKUP.DATA,
+    0: exports.CONNECTOR_REQUEST_CODES.CONNECT,
+    1: exports.CONNECTOR_REQUEST_CODES.DISCONNECT,
+    2: exports.CONNECTOR_REQUEST_CODES.DATA,
 };
 exports.LEAVE_AREA_CODE_LOOKUP = {
     CONNECTION_LOST: 0,

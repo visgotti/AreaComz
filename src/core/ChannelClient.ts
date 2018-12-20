@@ -1,31 +1,46 @@
 import { Channel } from './Channel';
 
-export class ChannelClient {
-    private channel: Channel;
-    private sessionId: number;
 
-    constructor(sessionId, channel) {
-        this.sessionId = sessionId;
-        this.channel = channel;
+export class ChannelClient {
+    private state: any;
+    public channels: Array<Channel>;
+    public uid: string;
+
+    constructor(uid) {
+        this.uid = uid;
+        this.state = {};
+        this.channels = [];
     }
 
+    public onConfirmedConnection(areaIndex: number, data?: any) {};
+
+    public onFailedConnection(areaIndex: number, data?: any) {};
+
     public updateState(state) {
-        this.channel.updateClientState(this.sessionId, state);
+        this.state = state;
+        for(let i = 0; i < this.channels.length; i++) {
+            this.channels[i].updateClientState(this.uid, state);
+        }
+    }
+
+    public isInArea(areaIndex) {
+        for(let i = 0; i < this.channels.length; i++) {
+            if(areaIndex === this.channels[i].areaIndex) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public getCurrentState() {
-        return this.channel.getCurrentState(this.sessionId);
+        return this.state;
     }
 
-    public getCurrentAreaId() {
-        return this.channel.areaId
+    public getCurrentAreaIds() {
+        return this.channels.map(channel => channel.areaId);
     }
 
-    public getCurrentAreaIndex() {
-        return this.channel.areaIndex
-    }
-
-    public getCurrentChannel() {
-        return this.channel;
+    public getCurrentAreaIndexes() {
+        return this.channels.map(channel => channel.areaIndex);
     }
 };
