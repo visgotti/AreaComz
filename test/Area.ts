@@ -113,15 +113,16 @@ describe('Channel <--> Area Communication', function() {
 
         // channel 0s onAreaMessage WILL be fired
         channel0s.forEach(channel => {
-            channel.onAreaMessage = ((data) => {
+            channel.onAreaMessage = ((areaIndex, data) => {
                 messagesReceived++;
+                assert.strictEqual(areaIndex, area0.areaIndex);
                 assert.strictEqual(data, area0.areaId);
             });
         });
 
         // channel1s onAreaMessage will NOT be fired
         channel1s.forEach(channel => {
-            channel.onAreaMessage = ((data) => {
+            channel.onAreaMessage = ((areaIndex, data) => {
                 messagesReceived++;
             });
         });

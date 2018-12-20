@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a1856c5-a8fe-4ba6-9119-6541d2e50208" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/ChannelClient.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/areaConfig.json" afterPath="$PROJECT_DIR$/areaConfig.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/AreaComz/core/Channel.js" afterPath="$PROJECT_DIR$/dist/AreaComz/core/Channel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/AreaComz/index.d.ts" afterPath="$PROJECT_DIR$/dist/AreaComz/index.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/AreaComz/index.js" afterPath="$PROJECT_DIR$/dist/AreaComz/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Area.ts" afterPath="$PROJECT_DIR$/src/core/Area.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Broker.ts" afterPath="$PROJECT_DIR$/src/core/Broker.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Channel.ts" afterPath="$PROJECT_DIR$/src/core/Channel.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/ChannelClient.ts" afterPath="$PROJECT_DIR$/src/core/ChannelClient.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Connector.ts" afterPath="$PROJECT_DIR$/src/core/Connector.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.ts" afterPath="$PROJECT_DIR$/src/index.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/Area.ts" afterPath="$PROJECT_DIR$/test/Area.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/Connector.ts" afterPath="$PROJECT_DIR$/test/Connector.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testConfig.json" afterPath="$PROJECT_DIR$/test/testConfig.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,8 +29,8 @@
             <file leaf-file-name="Area.ts" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/test/Area.ts">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="366">
-                    <caret line="135" column="6" lean-forward="true" selection-start-line="135" selection-start-column="6" selection-end-line="135" selection-end-column="6" />
+                  <state relative-caret-position="180">
+                    <caret line="99" column="6" lean-forward="false" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
                     <folding>
                       <element signature="e#0#33#0" expanded="true" />
                     </folding>
@@ -62,8 +52,8 @@
       <file leaf-file-name="Area.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Area.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-825">
-              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="157">
+              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -91,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="areaConfig.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="areaConfig.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/areaConfig.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+            <state relative-caret-position="270">
+              <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -104,18 +94,18 @@
       <file leaf-file-name="Broker.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Broker.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="164">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChannelClient.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ChannelClient.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/ChannelClient.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="39" column="59" lean-forward="false" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
+            <state relative-caret-position="120">
+              <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -124,8 +114,8 @@
       <file leaf-file-name="Channel.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Channel.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="92" column="21" lean-forward="false" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="21" />
+            <state relative-caret-position="352">
+              <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -136,8 +126,8 @@
       <file leaf-file-name="Connector.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Connector.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="158" column="40" lean-forward="true" selection-start-line="158" selection-start-column="40" selection-end-line="158" selection-end-column="40" />
+            <state relative-caret-position="157">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <element signature="n#!!block;n#createChannels#0;n#Connector#0" expanded="false" />
@@ -161,8 +151,8 @@
       <file leaf-file-name="ChannelClient.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/ChannelClient.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+            <state relative-caret-position="232">
+              <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -174,11 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Connectors</find>
-      <find>Area</find>
-      <find>close</find>
-      <find>_getChannel</find>
-      <find>channelMap</find>
       <find>pendingStates</find>
       <find>b</find>
       <find>get</find>
@@ -200,10 +185,15 @@
       <find>_deleteChanelClient</find>
       <find>connect</find>
       <find>responseCode</find>
-      <find>connectTo</find>
       <find>initialize</find>
-      <find>areaId</find>
       <find>addClient</find>
+      <find>areaId</find>
+      <find>connectTo</find>
+      <find>onChannelMessage</find>
+      <find>onAreaMessage</find>
+      <find>handleReceivedMessage</find>
+      <find>broadcast</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace>winston.log</replace>
@@ -213,8 +203,8 @@
       <replace>_addUidToMap</replace>
       <replace>uid</replace>
       <replace>'</replace>
-      <replace>awaitingConnectionCallbacks</replace>
       <replace>mockUid</replace>
+      <replace>awaitingConnectionCallbacks</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -240,14 +230,14 @@
         <option value="$PROJECT_DIR$/src/index.ts" />
         <option value="$PROJECT_DIR$/areaConfig.json" />
         <option value="$PROJECT_DIR$/test/testConfig.json" />
-        <option value="$PROJECT_DIR$/src/core/Broker.ts" />
         <option value="$PROJECT_DIR$/src/core/ChannelClient.ts" />
-        <option value="$PROJECT_DIR$/src/core/Channel.ts" />
         <option value="$PROJECT_DIR$/test/Connector.ts" />
-        <option value="$PROJECT_DIR$/src/core/Connector.ts" />
-        <option value="$PROJECT_DIR$/src/core/Area.ts" />
         <option value="$PROJECT_DIR$/test/ChannelClient.ts" />
         <option value="$PROJECT_DIR$/test/Area.ts" />
+        <option value="$PROJECT_DIR$/src/core/Area.ts" />
+        <option value="$PROJECT_DIR$/src/core/Broker.ts" />
+        <option value="$PROJECT_DIR$/src/core/Channel.ts" />
+        <option value="$PROJECT_DIR$/src/core/Connector.ts" />
       </list>
     </option>
   </component>
@@ -486,12 +476,12 @@
       <workItem from="1545152138794" duration="15318000" />
       <workItem from="1545173497567" duration="5430000" />
       <workItem from="1545241660226" duration="9096000" />
-      <workItem from="1545252090859" duration="15507000" />
+      <workItem from="1545252090859" duration="19155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73836000" />
+    <option name="totallyTimeSpent" value="77484000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="59" y="21" width="1541" height="879" extended-state="6" />
@@ -834,79 +824,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Broker.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/ChannelClient.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="39" column="59" lean-forward="false" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Connector.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="158" column="40" lean-forward="true" selection-start-line="158" selection-start-column="40" selection-end-line="158" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-            <element signature="n#!!block;n#createChannels#0;n#Connector#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Area.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-825">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/Area.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="135" column="6" lean-forward="true" selection-start-line="135" selection-start-column="6" selection-end-line="135" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ChannelClient.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/Connector.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="61" column="10" lean-forward="false" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="10" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Channel.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="92" column="21" lean-forward="false" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -921,8 +844,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/areaConfig.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        <state relative-caret-position="270">
+          <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ChannelClient.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Area.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="99" column="6" lean-forward="false" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Area.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Broker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Channel.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Connector.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+            <element signature="n#!!block;n#createChannels#0;n#Connector#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/ChannelClient.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
           <folding />
         </state>
       </provider>

@@ -5,9 +5,9 @@ import { CONNECTOR_REQUEST_CODES, LEAVE_AREA_CODE_LOOKUP } from './../index';
 
 export class Channel {
     private dealerSocket: any;
-    private clients: Array<any>;
     private pendingStates: any;
     public areaId: string;
+    public clients: Array<any>;
     public areaIndex: number;
 
     constructor(dealerSocket: any, areaIndex: number, gameId: number) {
@@ -18,7 +18,7 @@ export class Channel {
         this.pendingStates = {};
     }
 
-    public onAreaMessage(message) {}
+    public onAreaMessage(areaIndex, data) {}
 
     public addClient(channelClient: ChannelClient, data?: any) {
         // attach channelClient to the client
@@ -41,7 +41,6 @@ export class Channel {
         delete this.pendingStates[uid];
 
         if(reasonCode !== null && !(isNaN(reasonCode))) {
-            console.log('the reason code was', reasonCode);
             if(!(LEAVE_AREA_CODE_LOOKUP[reasonCode])) {
                 throw 'Invalid reason code provided to removeClient';
             }
@@ -132,7 +131,6 @@ export class Channel {
      */
     private sendMessage(message: any) {
         const serialized = JSON.stringify(message);
-        console.log('sending message from channel...', this.areaId);
         this.dealerSocket.send([ this.areaId, '', serialized]);
     }
 };

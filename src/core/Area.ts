@@ -26,7 +26,6 @@ export class Area {
         this.dealerSocket.identity = this.areaId;
 
         this.dealerSocket.connect(routerBrokerURI);
-        console.log('connecting dealer in area with area id of', this.areaId);
 
         this.registerRequestHandlers();
 
@@ -47,8 +46,11 @@ export class Area {
      */
     public onClientConnect(uid: string, data?: any) : any {}
 
-    public broadcast(data) {
-        const encoded = JSON.stringify(data);
+    public broadcast(data : any) {
+        const message : any = {};
+        message.data = data;
+        message.areaIndex = this.areaIndex;
+        const encoded = JSON.stringify(message);
         this.pubSocket.send([this.areaId, encoded]);
     }
 
