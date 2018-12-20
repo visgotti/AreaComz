@@ -9,7 +9,7 @@ export class Connector {
     private dealerSocket: any = {};
     private subscriberSocket: any = {};
     private channelMap: Map<string, Channel>;
-    private uidMap: Map<string, any>;
+    private uidChannelClientMap: Map<string, ChannelClient>;
     private awaitingConnectionCallbacks: Map<string, Function>;
 
     public channels: Array<Channel> = [];
@@ -27,7 +27,7 @@ export class Connector {
         this.channelMap = new Map();
 
         this.gameId = gameId;
-        this.uidMap = new Map();
+        this.uidChannelClientMap = new Map();
 
         this.awaitingConnectionCallbacks = new Map();
 
@@ -48,7 +48,7 @@ export class Connector {
                 channelClient.channels[i].removeClient(uid, LEAVE_AREA_CODE_LOOKUP.CONNECTION_LOST)
             }
         }
-        this.uidMap.delete(uid);
+        this.uidChannelClientMap.delete(uid);
     }
 
     /**
@@ -174,27 +174,19 @@ export class Connector {
     }
 
     private _addUidToMap(uid, channelClient: ChannelClient) : any {
-        this.uidMap.set(uid, {
-            uid,
-            channelClient,
-        });
-        return this.uidMap.get(uid);
+        this.uidChannelClientMap.set(uid, channelClient);
+        return this.uidChannelClientMap.get(uid);
     }
 
     private _deleteChanelClient(uid) {
-        const session = this.uidMap.get(uid);
-        if(session) {
-            delete session.channelClient;
+        if(this.uidChannelClientMap.has(uid)) {
+            this.uidChannelClientMap.delete(uid);
         }
     }
 
     private _getChannelClient(uid) : ChannelClient {
-        const session = this.uidMap.get(uid);
-        if(session) {
-            const channelClient = session.channelClient;
-            if(channelClient) {
-                return channelClient;
-            }
+        if(this.uidChannelClientMap.has(uid)) {
+            return this.uidChannelClientMap.get(uid);
         }
         return null;
     }

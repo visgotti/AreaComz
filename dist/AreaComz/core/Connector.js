@@ -16,7 +16,7 @@ class Connector {
         this.channels = [];
         this.channelMap = new Map();
         this.gameId = gameId;
-        this.uidMap = new Map();
+        this.uidChannelClientMap = new Map();
         this.awaitingConnectionCallbacks = new Map();
         this.createChannels(areasData);
         this.registerResponseHandlers();
@@ -32,7 +32,7 @@ class Connector {
                 channelClient.channels[i].removeClient(uid, index_1.LEAVE_AREA_CODE_LOOKUP.CONNECTION_LOST);
             }
         }
-        this.uidMap.delete(uid);
+        this.uidChannelClientMap.delete(uid);
     }
     /**
      * Creates channel client
@@ -145,20 +145,20 @@ class Connector {
         });
     }
     _addUidToMap(uid, channelClient) {
-        this.uidMap.set(uid, {
+        this.uidChannelClientMap.set(uid, {
             uid,
             channelClient,
         });
-        return this.uidMap.get(uid);
+        return this.uidChannelClientMap.get(uid);
     }
     _deleteChanelClient(uid) {
-        const session = this.uidMap.get(uid);
+        const session = this.uidChannelClientMap.get(uid);
         if (session) {
             delete session.channelClient;
         }
     }
     _getChannelClient(uid) {
-        const session = this.uidMap.get(uid);
+        const session = this.uidChannelClientMap.get(uid);
         if (session) {
             const channelClient = session.channelClient;
             if (channelClient) {

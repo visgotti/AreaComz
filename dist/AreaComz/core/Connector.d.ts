@@ -4,7 +4,7 @@ export declare class Connector {
     private dealerSocket;
     private subscriberSocket;
     private channelMap;
-    private uidMap;
+    private uidChannelClientMap;
     private awaitingConnectionCallbacks;
     channels: Array<Channel>;
     gameId: number;
