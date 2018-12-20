@@ -145,25 +145,17 @@ class Connector {
         });
     }
     _addUidToMap(uid, channelClient) {
-        this.uidChannelClientMap.set(uid, {
-            uid,
-            channelClient,
-        });
+        this.uidChannelClientMap.set(uid, channelClient);
         return this.uidChannelClientMap.get(uid);
     }
     _deleteChanelClient(uid) {
-        const session = this.uidChannelClientMap.get(uid);
-        if (session) {
-            delete session.channelClient;
+        if (this.uidChannelClientMap.has(uid)) {
+            this.uidChannelClientMap.delete(uid);
         }
     }
     _getChannelClient(uid) {
-        const session = this.uidChannelClientMap.get(uid);
-        if (session) {
-            const channelClient = session.channelClient;
-            if (channelClient) {
-                return channelClient;
-            }
+        if (this.uidChannelClientMap.has(uid)) {
+            return this.uidChannelClientMap.get(uid);
         }
         return null;
     }
